@@ -5,9 +5,7 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
-
-def pregunta_09():
-    """
+"""
     Retorne un diccionario que contenga la cantidad de registros en que
     aparece cada clave de la columna 5.
 
@@ -24,3 +22,36 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+
+def leer_datos():
+    ruta = r"C:\Especializacion-Analitica\Descriptiva\LAB-01-programacion-basica-en-python-laugrei1821\files\input\data.csv"
+    datos = []
+    with open(ruta, "r", encoding="utf-8") as f:
+        for linea in f:
+            linea = linea.strip()
+            partes = linea.split("\t")
+            datos.append(partes)
+    return datos
+
+
+def pregunta_09():
+
+    datos = leer_datos()
+    conteo_claves = {}
+
+    for fila in datos:
+        columna5 = fila[4]              
+        pares = columna5.split(",")     
+
+        for par in pares:
+            clave, valor = par.split(":")   
+            
+            if clave not in conteo_claves:
+                conteo_claves[clave] = 0
+
+            conteo_claves[clave] += 1       
+    return dict(sorted(conteo_claves.items()))
+
+
+if __name__ == "__main__":
+    print(pregunta_09())

@@ -5,9 +5,7 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
-
-def pregunta_08():
-    """
+"""
     Genere una lista de tuplas, donde el primer elemento de cada tupla
     contiene  el valor de la segunda columna; la segunda parte de la tupla
     es una lista con las letras (ordenadas y sin repetir letra) de la
@@ -27,3 +25,42 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+
+
+
+def leer_datos():
+    ruta = r"C:\Especializacion-Analitica\Descriptiva\LAB-01-programacion-basica-en-python-laugrei1821\files\input\data.csv"
+    datos = []
+    with open(ruta, "r", encoding="utf-8") as f:
+        for linea in f:
+            linea = linea.strip()
+            partes = linea.split("\t")
+            datos.append(partes)
+    return datos
+
+
+def pregunta_08():
+
+    datos = leer_datos()
+    asociaciones = {}
+
+    for fila in datos:
+        letra = fila[0]         
+        valor = int(fila[1])    
+
+        if valor not in asociaciones:
+            asociaciones[valor] = set()   
+
+        asociaciones[valor].add(letra)
+
+
+    salida = []
+    for valor in sorted(asociaciones.keys()):
+        letras_ordenadas = sorted(list(asociaciones[valor]))
+        salida.append((valor, letras_ordenadas))
+
+    return salida
+
+
+if __name__ == "__main__":
+    print(pregunta_08())
