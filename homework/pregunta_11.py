@@ -16,7 +16,7 @@ utilizar pandas, numpy o scipy.
     """
 
 def leer_datos():
-    ruta = r"C:\Especializacion-Analitica\Descriptiva\LAB-01-programacion-basica-en-python-laugrei1821\files\input\data.csv"
+    ruta = "files/input/data.csv"
     datos = []
     with open(ruta, "r", encoding="utf-8") as f:
         for linea in f:
@@ -32,8 +32,8 @@ def pregunta_11():
     resultado = {}
 
     for fila in datos:
-        valor_col2 = int(fila[1])          # columna 2 correcta
-        letras_col4 = fila[3].split(",")   # columna 4 correcta
+        valor_col2 = int(fila[1])          
+        letras_col4 = fila[3].split(",")   
 
         for letra in letras_col4:
             if letra not in resultado:

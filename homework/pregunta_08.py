@@ -29,7 +29,7 @@ utilizar pandas, numpy o scipy.
 
 
 def leer_datos():
-    ruta = r"C:\Especializacion-Analitica\Descriptiva\LAB-01-programacion-basica-en-python-laugrei1821\files\input\data.csv"
+    ruta = "files/input/data.csv"
     datos = []
     with open(ruta, "r", encoding="utf-8") as f:
         for linea in f:
